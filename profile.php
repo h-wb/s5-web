@@ -201,6 +201,8 @@ foreach ($res as $res2) {
 </footer>
 
 <!-- Bootstrap core JavaScript -->
+<script src="bootstrap/vendor/jquery/jquery.min.js"></script>
+<script src="bootstrap/vendor/popper/popper.min.js"></script>
 <script src="bootstrap/vendor/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- Plugin JavaScript -->

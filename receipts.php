@@ -21,10 +21,12 @@ include 'getAliment.php';
     <link href="bootstrap/css/scrolling-nav.css" rel="stylesheet">
 
     <!-- Bootstrap core JavaScript -->
+    <script src="bootstrap/vendor/jquery/jquery.min.js"></script>
+    <script src="bootstrap/vendor/popper/popper.min.js"></script>
     <script src="bootstrap/vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="bootstrap/vendor/jquery-easing/jquery.easing.js"></script>
 
     <!-- Custom JavaScript for this theme -->
     <script src="bootstrap/js/scrolling-nav.js"></script>

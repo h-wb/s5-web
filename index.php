@@ -135,6 +135,8 @@ include 'bdd/connexion.php';
 <script src="bootstrap/vendor/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- Plugin JavaScript -->
+<script src="bootstrap/vendor/jquery/jquery.min.js"></script>
+<script src="bootstrap/vendor/popper/popper.min.js"></script>
 <script src="bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom JavaScript for this theme -->
