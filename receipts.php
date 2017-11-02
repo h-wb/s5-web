@@ -97,105 +97,159 @@ include 'getAliment.php';
 
 <section>
     <div class="container">
-        <ol id="ariane" class="breadcrumb">
-            <li id="" class="breadcrumb-item">Aliment</li>
-        </ol>
-        <div id="dvTable" class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ol id="ariane" class="breadcrumb">
+                    <li id="" class="breadcrumb-item">Aliment</li>
+                </ol>
+                <div id="dvTable" class="container">
 
-            <script>
+                    <script>
 
-                function tableau(array) {
+                        function tableau(array) {
 
-                    function ajax(values) {
-                        $.ajax({
-                            url: "getAliment.php",
-                            type: "post",
-                            dataType: 'json',
-                            data: {values: values},
-                            success: function (data) {
-                                array = data;
-                                console.log(array);
-                                if (array.length <= 0) {
-                                    console.log('null');
-                                } else {
-                                    tableau(array);
-                                }
+                            function ajaxAliment(values) {
+                                $.ajax({
+                                    url: "getAliment.php",
+                                    type: "post",
+                                    dataType: 'json',
+                                    data: {values: values},
+                                    success: function (data) {
+                                        array = data;
+                                        console.log(array);
+                                        if (array.length <= 0) {
+                                            console.log('null');
+                                        } else {
+                                            tableau(array);
+                                        }
 
-                            },
-                            error: function (jqXHR, textStatus, errorThrown) {
-                                console.log(textStatus, errorThrown);
+                                    },
+                                    error: function (jqXHR, textStatus, errorThrown) {
+                                        console.log(textStatus, errorThrown);
+                                    }
+
+                                });
                             }
 
-                        });
-                    }
+                            function ajaxRecette(composant) {
+                                $.ajax({
+                                    url: "getRecette.php",
+                                    type: "post",
+                                    dataType: 'json',
+                                    data: {composant: composant},
+                                    success: function (data) {
+                                        var recettesArray = data;
+                                        console.log(recettesArray);
+                                        if(recettesArray.length<=0){
+                                            $("#recettes").empty();
+                                        }else
+                                        {
+                                            $("#recettes").empty();
+                                            for (var i = 0; i < recettesArray.length; i++) {
+                                                var li = document.createElement("LI")
+                                                var a = document.createElement("a");
+                                                li.className = "list-group-item";
+                                                a.textContent = recettesArray[i][1];
+                                                a.setAttribute('href', "page.php?id="+recettesArray[i][0]);
+                                                li.appendChild(a);
+                                                document.getElementById("recettes").appendChild(li);
+                                            }
+                                        }
+                                        //document.getElementById("recettes").remove();
 
-                    //Création d'une table et de ses arguments
-                    var table = document.createElement("TABLE");
-                    table.className = "table table-hover";
-                    table.id = "table";
-
-                    //Création de l'entête du tableau
-                    var header = new Array();
-                    header.push(["Aliment"]);
-
-                    //Supression de toutes les lignes
-                    while (table.rows.length > 0) {
-                        table.deleteRow(0);
-                    }
-
-                    //Création des lignes
-                    var row = table.insertRow(-1);
-                    var headerCell = document.createElement("TH");
-                    headerCell.innerHTML = header[0];
-                    row.appendChild(headerCell);
 
 
-                    //Ajout des données dans les lignes
-                    for (var i = 0; i < array.length; i++) {
-                        var row = table.insertRow(-1);
-                        var cell = row.insertCell(-1);
-                        cell.innerHTML = array[i];
-                    }
 
-                    var dvTable = document.getElementById("dvTable");
-                    dvTable.innerHTML = "";
-                    dvTable.appendChild(table);
+                                    },
+                                    error: function (jqXHR, textStatus, errorThrown) {
+                                        console.log(textStatus, errorThrown);
+                                    }
 
-                    //Réagit quand on clique sur le fil d'ariane + appel AJAX
-                    $("#ariane li").click(function () {
-                        var values = this.innerHTML;
-                        $(this).nextAll().remove();
-                        ajax(values);
-                    });
+                                });
+                            }
 
-                    //Réagit quand on clique sur une ligne + appel AJAX
-                    $("#table td").click(function () {
-                        if (array.length <= 0) {
-                            console.log('null');
-                        } else {
-                            var values = this.innerText;
-                            var li = document.createElement("LI")
-                            li.className = "breadcrumb-item";
-                            var valueLi = document.createTextNode(values);
-                            li.appendChild(valueLi);
-                            document.getElementById("ariane").appendChild(li);
-                            ajax(values);
+                            //Création d'une table et de ses arguments
+                            var table = document.createElement("TABLE");
+                            table.className = "table table-hover";
+                            table.id = "table";
+
+                            //Création de l'entête du tableau
+                            var header = new Array();
+                            header.push(["Composants"]);
+
+                            //Supression de toutes les lignes
+                            while (table.rows.length > 0) {
+                                table.deleteRow(0);
+                            }
+
+                            //Création des lignes
+                            var row = table.insertRow(-1);
+                            var headerCell = document.createElement("TH");
+                            headerCell.innerHTML = header[0];
+                            row.appendChild(headerCell);
+
+
+                            //Ajout des données dans les lignes
+                            for (var i = 0; i < array.length; i++) {
+                                var row = table.insertRow(-1);
+                                var cell = row.insertCell(-1);
+                                cell.innerHTML = array[i];
+                            }
+
+                            var dvTable = document.getElementById("dvTable");
+                            dvTable.innerHTML = "";
+                            dvTable.appendChild(table);
+
+                            //Réagit quand on clique sur le fil d'ariane + appel AJAX
+                            $("#ariane li").click(function () {
+                                var values = this.innerHTML;
+                                $(this).nextAll().remove();
+                                ajaxAliment(values);
+                            });
+
+                            //Réagit quand on clique sur une ligne + appel AJAX
+                            $('#table td').on('click', function () {
+                                if (array.length <= 0) {
+                                } else {
+                                    var values = this.innerText;
+                                    var li = document.createElement("LI")
+                                    li.className = "breadcrumb-item";
+                                    var valueLi = document.createTextNode(values);
+                                    li.appendChild(valueLi);
+                                    document.getElementById("ariane").appendChild(li);
+                                    ajaxAliment(values);
+
+
+                                }
+                            });
+
+                            $('#table td').on('mouseover', function () {
+                                var composant = this.innerText;
+                                ajaxRecette(composant)
+                            });
+
 
                         }
 
-
-                    });
-                }
-
-                //Passage d'une array PHP vers array JS avec encodage JSON (premier chargement de page)
-                var array = <?php echo json_encode($result, JSON_PRETTY_PRINT) ?>;
+                        //Passage d'une array PHP vers array JS avec encodage JSON (premier chargement de page)
+                        var array = <?php echo json_encode($result, JSON_PRETTY_PRINT) ?>;
 
 
-                tableau(array);
+                        tableau(array);
 
-            </script>
+                    </script>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="container">
+                    <h2>Recettes</h2>
+                </br>
+                    <ul id="recettes" class="list-group">
+
+                    </ul>
+                </div>
+            </div>
         </div>
-    </div>
 </section>
 
 <!-- Footer -->

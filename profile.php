@@ -120,62 +120,61 @@ foreach ($res as $res2) {
 <section id="about">
     <div class="container">
             <div class="panel panel-default">
-                <div class="profilbase">
                     <br method="post" action="profileModification.php">
                     <h2>Mon profil</h2>
                     </br>
                     <label> Sexe :</label>
                     <?php
                     if ($sexe == '') {
-                        echo "  -";
+                        echo "-";
                     } else {
                         echo $sexe;
                     } ?>
                     </br></br>
                     <label>Nom : </label><?php if ($nom == '') {
-                        echo "  -";
+                        echo "-";
                     } else {
                         echo $nom;
                     } ?>
                     </br></br>
                     <label>Prénom : </label><?php if ($prenom == '') {
-                        echo "  -";
+                        echo "-";
                     } else {
                         echo $prenom;
                     } ?>
                     </br></br>
                     <label>Date de naissance : </label><?php if ($datenaissance == '') {
-                        echo "  -";
+                        echo "-";
                     } else {
                         echo $datenaissance;
                     } ?>
                     </br></br>
                     <label>Mail : </label><?php if ($mail == '') {
-                        echo "  -";
+                        echo "-";
                     } else {
                         echo $mail;
                     } ?>
                     </br></br>
                     <label>Adresse : </label><?php if ($adresse == '') {
-                        echo "  -";
+                        echo "-";
                     } else {
                         echo $adresse;
                     } ?>
                     </br></br>
                     <label>Code postal : </label><?php if ($codepostal == 0) {
-                        echo "  -";
+                        echo "-";
                     } else {
                         echo $codepostal;
                     } ?>
                     </br></br>
                     <label>Ville : </label><?php if ($ville == '') {
-                        echo "  -";
+                        echo "-";
                     } else {
                         echo $ville;
                     } ?>
                     </br></br>
                     <label> Telephone :</label><?php if ($numerotel == '') {
-                        echo "  -";
+                        echo "-";
                     } else {
                         echo $numerotel;
                     }
@@ -188,7 +187,7 @@ foreach ($res as $res2) {
 
                     </form>
                 </div>
-            </div>
+
     </div>
 
 </section>

@@ -335,54 +335,52 @@ foreach ($res as $res2) {
     <div class="container">
         <div class="panel panel-default">
             <div>
-                <div>
-                    <div class="modprof">
-                        <form method="post" action="profileModification.php">
-                            <h2>Modification de mon profil</h2>
-                            <br/>
-                            <label>Sexe :</label>
-                            <input type="radio" name="sexe" value="f"/> une femme
-                            <input type="radio" name="sexe" value="h"/> un homme
-                            <br/>
-                            <br/>
-                            <label>Nom :</label>
-                            <input type="text" name="nom" class="form-control nom"
-                                   value="<?php echo $nom; ?>"/><br/>
-                            <label>Prénom :</label>
-                            <input type="text" class="form-control prenom" name="prenom"
-                                   value="<?php echo $prenom; ?>"/><br/>
-                            <label>Date de naissance :</label>
-                            <input type="date" class="form-control naissance" name="naissance"
-                                   value="<?php echo $datenaissance; ?>"/><br/>
-                            <label>Mail :</label>
-                            <input type="text" class="form-control mail" name="mail"
-                                   value="<?php echo $mail; ?>"/><br/>
-                            <label>Adresse :</label>
-                            <input type="text" class="form-control adresse" name="adresse"
-                                   value="<?php echo $adresse; ?>"/><br/>
-                            <label>Code postal :</label>
-                            <input type="text" class="form-control code_postal" name="code_postal"
-                                   value="<?php if ($codepostal != 0) {
-                                       echo $codepostal;
-                                   } else {
-                                       echo '';
-                                   } ?>"/><br/>
-                            <label>Ville :</label>
-                            <input type="text" class="form-control ville" name="ville"
-                                   value="<?php echo $ville; ?>"/><br/>
-                            <label class="labeltel">Telephone :</label>
-                            <input type="text" class="form-control num_tel" name="num_tel"
-                                   value="<?php echo $numerotel; ?>"/><br/>
+                <d>
+                    <form method="post" action="profileModification.php">
+                        <h2>Modification de mon profil</h2>
+                        <br/>
+                        <label>Sexe :</label>
+                        <input type="radio" name="sexe" value="f"/> une femme
+                        <input type="radio" name="sexe" value="h"/> un homme
+                        <br/>
+                        <br/>
+                        <label>Nom :</label>
+                        <input type="text" name="nom" class="form-control nom"
+                               value="<?php echo $nom; ?>"/><br/>
+                        <label>Prénom :</label>
+                        <input type="text" class="form-control prenom" name="prenom"
+                               value="<?php echo $prenom; ?>"/><br/>
+                        <label>Date de naissance :</label>
+                        <input type="date" class="form-control naissance" name="naissance"
+                               value="<?php echo $datenaissance; ?>"/><br/>
+                        <label>Mail :</label>
+                        <input type="text" class="form-control mail" name="mail"
+                               value="<?php echo $mail; ?>"/><br/>
+                        <label>Adresse :</label>
+                        <input type="text" class="form-control adresse" name="adresse"
+                               value="<?php echo $adresse; ?>"/><br/>
+                        <label>Code postal :</label>
+                        <input type="text" class="form-control code_postal" name="code_postal"
+                               value="<?php if ($codepostal != 0) {
+                                   echo $codepostal;
+                               } else {
+                                   echo '';
+                               } ?>"/><br/>
+                        <label>Ville :</label>
+                        <input type="text" class="form-control ville" name="ville"
+                               value="<?php echo $ville; ?>"/><br/>
+                        <label class="labeltel">Telephone :</label>
+                        <input type="text" class="form-control num_tel" name="num_tel"
+                               value="<?php echo $numerotel; ?>"/><br/>
 
 
-                            <br/>
-                            <input type="submit" name="submit" class="btn btn-info" value="Mettre à jour"/>
+                        <br/>
+                        <input type="submit" name="submit" class="btn btn-info" value="Mettre à jour"/>
 
-                        </form>
-                    </div>
-                </div>
+                    </form>
             </div>
         </div>
+    </div>
     </div>
 
 </section>
