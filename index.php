@@ -88,7 +88,9 @@ include 'bdd/connexion.php';
         <div>
             <div class="global">
 
-                <div>
+                <br>
+
+                <h3 class="centre"><b>Sélection aléatoire de recettes</b></h3></br></br></br>
                     <?php
 
                     for($i=0;$i < 5; $i++) {
@@ -108,7 +110,7 @@ include 'bdd/connexion.php';
                                         $id = $result4;
                                     }
                                 }
-                                echo '<a href="page.php?id='.$id.'">' .$result2 . '</a></br></br>';
+                                echo '<h4 class="centre"><a href="page.php?id='.$id.'">' .$result2 . '</a></h4></br></br>';
                             }
                         }
 

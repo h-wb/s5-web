@@ -14,8 +14,12 @@ foreach($result as $key => $result2){
         $ingredients = $result2;
         $ingredient = explode("|", $result2);
     }else if($key === 'preparation'){
-        $preparation = $result2;
-        $preparation = explode(".", $result2);
+        if($titre != 'Hulk ( cocktail )') {
+            $preparation = $result2;
+            $preparation = explode(".", $result2);
+        }else{
+            $preparation = $result2;
+        }
     }
 }
 
@@ -121,36 +125,47 @@ if(isset($_POST['submit'])){
                     <div>
 
                         <?php
-                        echo '<h2>'.$titre.'</h2></br></br></br>';
-                        echo '<u><h3>Ingrédients</h3></u></br>';
+                        echo '<h2 class="centre">'.$titre.'</h2></br></br></br>';
+                        echo '<u><h3 class = "centre">Ingrédients</h3></u></br>';
                         foreach($ingredient as $key2 => $ingredient2){
-                            echo '- '.$ingredient2.'</br>';
+                            echo '<p class = "centre"> - '.$ingredient2.'</p>';
                         }
-                        echo '</br></br><u><h3>Preparation</h3></u></br>';
-                        foreach($preparation as $key3 => $preparation2){
-                            echo '- '.$preparation2.'</br>';
+                        echo '</br></br><u><h3 class="centre">Preparation</h3></u></br>';
+
+                        if($titre != 'Hulk ( cocktail )') {
+                            foreach ($preparation as $key3 => $preparation2) {
+                                echo '<p class = "centre">- ' . $preparation2 . '</p>';
+                            }
+                        }else{
+                            echo '<p class = "centre">- ' . $preparation . '</p>';
                         }
 
-                        $res = $objPDO->prepare("SELECT count(*) From favoris where idfav=".$_GET['id']." AND login='".$_SESSION['username']."'");
-                        $res->execute();
 
-                        $result = $res->fetch();
-                        foreach($result as $key5 => $resultat2){
-                            if($key5 === 0){
-                                $resfinal = $resultat2;
+                        $resfinal = 0;
+
+                        if($_SESSION) {
+                            $res = $objPDO->prepare("SELECT count(*) From favoris where idfav=" . $_GET['id'] . " AND login='" . $_SESSION['username'] . "'");
+                            $res->execute();
+
+                            $result = $res->fetch();
+                            foreach ($result as $key5 => $resultat2) {
+                                if ($key5 === 0) {
+                                    $resfinal = $resultat2;
+                                }
                             }
                         }
 
                         if($resfinal == 0) {
                             ?>
                             <form method="post" action="#">
-                                <input type="submit" name="submit" class="btn btn-info"
+                                <input type="submit" name="submit" class="btn btn-info centrebouton"
                                        value="Ajouter la recette aux favoris"/>
                             </form>
                             <?php
                         }else{
                             echo '</br><b>Recette déjà ajoutée dans les favoris</b>';
                         }
+
                         ?>
                     </div>
 
@@ -161,7 +176,7 @@ if(isset($_POST['submit'])){
 
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark">
+    <footer class="bottomrecette bg-dark">
         <div class="container">
             <p class="m-0 text-center text-white">Projet Web - Anthony GENOVA & Hugo WEHBE</p>
         </div>

@@ -5235,6 +5235,10 @@ button.close {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
+.centre{
+  text-align : center;
+}
+
 .carousel-indicators li::before {
   position: absolute;
   top: -10px;
@@ -5259,6 +5263,16 @@ button.close {
   background-color: #fff;
 }
 
+.centrebouton{
+  display: block;
+  margin : auto;
+}
+.bottomrecette{
+  padding-top: 3rem !important;
+  padding-bottom: 3rem !important;
+  margin-top : 80px;
+}
+
 .carousel-caption {
   position: absolute;
   right: 15%;
@@ -5269,6 +5283,10 @@ button.close {
   padding-bottom: 20px;
   color: #fff;
   text-align: center;
+}
+
+.marge{
+  margin-left : 470px;
 }
 
 .align-baseline {
