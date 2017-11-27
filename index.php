@@ -110,7 +110,7 @@ include 'bdd/connexion.php';
                                         $id = $result4;
                                     }
                                 }
-                                echo '<h4 class="centre"><a href="page.php?id='.$id.'">' .$result2 . '</a></h4></br></br>';
+                                echo '<h4 class="centre"><a href="page.php?id='.$id.'">' .utf8_encode($result2) . '</a></h4></br></br>';
                             }
                         }
 

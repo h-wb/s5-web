@@ -86,7 +86,7 @@ if($connexion){
                     $preparation = $valeur2;
 
 
-                    $objPDO -> query("INSERT INTO recettes (id, titre, ingredients, preparation) VALUES ('".$cle."','".addslashes($titre)."','".addslashes($ingredients)."','".addslashes($preparation)."')");
+                    $objPDO -> query("INSERT INTO recettes (id, titre, ingredients, preparation) VALUES ('".$cle."','".utf8_decode(addslashes($titre))."','".utf8_decode(addslashes($ingredients))."','".utf8_decode(addslashes($preparation))."')");
                 }
 
             }else{
@@ -113,13 +113,13 @@ if($connexion){
     $objPDO->query("UPDATE recettes SET photos='Le_vandetta.jpg' WHERE titre='Le vandetta'");
     $objPDO->query("UPDATE recettes SET photos='Margarita.jpg' WHERE titre='Margarita'");
     $objPDO->query("UPDATE recettes SET photos='Mojito.jpg' WHERE titre='Mojito'");
-    $objPDO->query("UPDATE recettes SET photos='Pina_coladag' WHERE titre='Pina colada'");
+    $objPDO->query("UPDATE recettes SET photos='Pina_colada.jpg' WHERE titre='Pina colada'");
     $objPDO->query("UPDATE recettes SET photos='Raifortissimo.jpg' WHERE titre='Raifortissimo'");
     $objPDO->query("UPDATE recettes SET photos='Sangria_sans_alcool.jpg' WHERE titre='Sangria sans alcool'");
     $objPDO->query("UPDATE recettes SET photos='Screwdriver.jpg' WHERE titre='Screwdriver'");
     $objPDO->query("UPDATE recettes SET photos='Shoot_up.jpg' WHERE titre='Shoot up'");
     $objPDO->query("UPDATE recettes SET photos='Tequila_sunrise.jpg' WHERE titre='Tequila sunrise'");
-    $objPDO->query("UPDATE recettes SET photos='Tipunch.jpg' WHERE titre='Tipunch'");
+    $objPDO->query("UPDATE recettes SET photos='Tipunch.jpg' WHERE id=105");
 
 
     $requete4 = "CREATE TABLE IF NOT EXISTS `".DB_NAME."`.`super_categ` (

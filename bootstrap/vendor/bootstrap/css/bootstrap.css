@@ -5285,6 +5285,17 @@ button.close {
   text-align: center;
 }
 
+img{
+  width:225px;
+  margin-left : 75px;
+  margin-top : 150px;
+}
+
+.test1{
+  float:left;
+  width : 0px
+}
+
 .marge{
   margin-left : 470px;
 }

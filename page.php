@@ -35,6 +35,7 @@ if(isset($_POST['submit'])){
         header("Location: login.php");
     }
 }
+
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -125,16 +126,30 @@ if(isset($_POST['submit'])){
                     <div>
 
                         <?php
-                        echo '<h2 class="centre">'.$titre.'</h2></br></br></br>';
+
+                        $res5 = $objPDO->prepare("SELECT * FROM recettes WHERE id=".$_GET['id']);
+                        $res5->execute();
+
+                        $result5 = $res5->fetch();
+
+                        foreach ($result as $key => $result2){
+                            if($key === 'photos') {
+                                if($result2 != ''){
+                                    echo "<div class='test1'><img src='photos/".$result2."'></div>";
+                                }
+                            }
+                        }
+
+                        echo '<h2 class="centre">'.utf8_encode($titre).'</h2></br></br></br>';
                         echo '<u><h3 class = "centre">Ingrédients</h3></u></br>';
                         foreach($ingredient as $key2 => $ingredient2){
-                            echo '<p class = "centre"> - '.$ingredient2.'</p>';
+                            echo '<p class = "centre"> - '.utf8_encode($ingredient2).'</p>';
                         }
                         echo '</br></br><u><h3 class="centre">Preparation</h3></u></br>';
 
                         if($titre != 'Hulk ( cocktail )') {
                             foreach ($preparation as $key3 => $preparation2) {
-                                echo '<p class = "centre">- ' . $preparation2 . '</p>';
+                                echo '<p class = "centre">- ' . utf8_encode($preparation2 ). '</p>';
                             }
                         }else{
                             echo '<p class = "centre">- ' . $preparation . '</p>';
